@@ -1,0 +1,8 @@
+SwiftQuantum Core
+Copyright 2026 SwiftQuantum Technologies, LLC
+
+This product includes software developed at SwiftQuantum Technologies, LLC.
+
+The stabilizer simulator implements the CHP tableau algorithm described in
+S. Aaronson and D. Gottesman, "Improved Simulation of Stabilizer Circuits",
+Phys. Rev. A 70, 052328 (2004), arXiv:quant-ph/0406196.

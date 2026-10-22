@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Weekly: re-run every example and test so the repository reports its own health.
+    - cron: "17 3 * * 1"
+
+jobs:
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain
+        run: swift --version
+      - name: Open-core boundary check
+        run: Scripts/check-boundary.sh
+      - name: Build
+        run: swift build -c release
+      - name: Test
+        run: swift test
+      - name: Examples
+        run: |
+          swift run -c release bell
+          swift run -c release ghz127
+          swift run -c release qft
+          swift run -c release repetition-memory 0.05 10000
+      - name: Capability report (reproduces the README table on this runner)
+        run: swift run -c release capability-report

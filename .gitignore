@@ -1,0 +1,14 @@
+.DS_Store
+/.build
+/.swiftpm/*
+!/.swiftpm/xcode/
+/.swiftpm/xcode/*
+!/.swiftpm/xcode/xcshareddata/
+/Packages
+*.xcodeproj
+xcuserdata/
+DerivedData/
+repetition_memory.stim
+repetition_memory.01
+qecirc_d3_memory.stim
+qecirc_d3_memory.01

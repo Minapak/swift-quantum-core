@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "SwiftQuantum Core"
+abstract: "A Swift package that runs stabilizer (Clifford) circuits offline on the device, with an exact dense statevector kernel for small circuits, and exports circuits to OpenQASM and Stim."
+type: software
+authors:
+  - family-names: Park
+    given-names: Eunmin
+    affiliation: "SwiftQuantum Technologies, LLC"
+license: Apache-2.0
+version: 0.1.0-dev
+keywords:
+  - quantum computing
+  - stabilizer simulation
+  - Clifford circuits
+  - quantum error correction
+  - Swift
+references:
+  - type: article
+    authors:
+      - family-names: Aaronson
+        given-names: Scott
+      - family-names: Gottesman
+        given-names: Daniel
+    title: "Improved Simulation of Stabilizer Circuits"
+    journal: "Physical Review A"
+    volume: 70
+    start: "052328"
+    year: 2004
+    doi: 10.1103/PhysRevA.70.052328
