@@ -45,7 +45,13 @@ final class DeviceReportTests: XCTestCase {
             print(String(format: "DEVICE-REPORT stabilizer GHZ %3d qubits, 100 shots: %9.1f ms, %d bytes", n, r.elapsedMilliseconds, r.stateMemoryBytes))
         }
 
-        for n in [20, 25] {
+        // 25 dense qubits takes minutes in a debug build; measure it only in Release.
+        #if DEBUG
+        let denseSizes = [16, 20]
+        #else
+        let denseSizes = [20, 25]
+        #endif
+        for n in denseSizes {
             var c = Circuit(qubits: n)
             for q in 0..<n { c.h(q); c.t(q) }
             for q in 0..<(n - 1) { c.cnot(q, q + 1) }

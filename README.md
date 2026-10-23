@@ -32,10 +32,10 @@ From a clone:
 swift run -c release ghz127
 ```
 
-In your own project, add the package (the URL is fixed when the public repository is created):
+In your own project, add the package:
 
 ```swift
-.package(url: "https://github.com/<owner>/swift-quantum-core.git", from: "0.1.0")
+.package(url: "https://github.com/Minapak/swift-quantum-core.git", from: "0.1.0")
 ```
 
 Then:
@@ -140,21 +140,24 @@ This repository is the correctness layer of SwiftQuantum: the stabilizer simulat
 - [x] Stabilizer simulator, exact kernel, circuit model with OpenQASM export and import
 - [x] Mid-circuit measurement, reset, Pauli noise, detectors, observables, detection-event export
 - [x] Backend client code excluded (`Scripts/check-boundary.sh`)
-- [x] Test suite (`swift test`, 38 tests) and a CI workflow
-- [ ] Public repository and v0.1.0 tag
-- [ ] The SwiftQuantum IDE app imports this package
-- [ ] A QECirc surface-code memory circuit runs on an iPhone and exports detection events
-- [ ] A notebook that decodes those events with PyMatching
+- [x] Test suite: `swift test` (XCTest and Swift Testing), and a CI workflow
+- [x] v0.1.0 tag
+- [ ] Public repository (private until the export-control record is confirmed)
+- [x] The SwiftQuantum IDE app imports this package for its stabilizer and dense statevector runs
+- [x] A QECirc surface-code memory circuit runs and exports detection events (macOS and the iOS Simulator)
+- [ ] The same on a physical iPhone (`xcodebuild test -scheme SwiftQuantumCoreTests -destination 'id=<device>'`)
+- [x] A notebook that decodes those events with PyMatching
 
 **M2, months 2 to 3**
-- [x] Stim circuit text export
-- [ ] Stim circuit text import, and a round-trip test that re-runs every example in Stim and compares distributions
+- [x] Stim circuit text export and import
+- [x] QECirc circuits re-run in Stim with matching statistics (`Scripts/verify_with_stim.py`)
+- [ ] The same Stim comparison for every example, run in CI
 - [ ] DocC documentation and a "your first stabilizer circuit, on your phone" tutorial
 - [ ] Ten or more example circuits, including the QECirc set
 
 **M3, month 4**
 - [ ] A metriq-gym task for stabilizer simulation on consumer edge devices
-- [ ] CI matrix across macOS and iOS simulators
+- [x] CI workflow with macOS and iOS Simulator jobs (not yet run on GitHub)
 - [ ] CONTRIBUTING guide, code of conduct, good first issues
 - [ ] Swift Package Index listing and v1.0.0
 

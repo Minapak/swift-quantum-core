@@ -28,3 +28,12 @@ jobs:
           swift run -c release repetition-memory 0.05 10000
       - name: Capability report (reproduces the README table on this runner)
         run: swift run -c release capability-report
+
+  ios-simulator:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test on an iOS Simulator
+        run: |
+          UDID=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; print(next(x['udid'] for k,v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone')))")
+          xcodebuild test -scheme SwiftQuantumCoreTests -destination "id=$UDID"
