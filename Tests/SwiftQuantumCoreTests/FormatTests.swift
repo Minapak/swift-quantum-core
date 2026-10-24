@@ -163,6 +163,10 @@ final class ReadmeSnippetTests: XCTestCase {
     }
 
     func testReadmeQuickStartMatchesExample() throws {
+        // Source files only exist on the build machine, not on a device.
+        guard FileManager.default.fileExists(atPath: packageRoot.appendingPathComponent("README.md").path) else {
+            throw XCTSkip("README is not available on this device")
+        }
         let readme = try String(contentsOf: packageRoot.appendingPathComponent("README.md"), encoding: .utf8)
         let example = try String(contentsOf: packageRoot.appendingPathComponent("Examples/GHZ127/main.swift"), encoding: .utf8)
         let quickStart = """

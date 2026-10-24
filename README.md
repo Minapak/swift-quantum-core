@@ -60,6 +60,7 @@ let result = try sim.run(c, shots: 100)
 | Also | mid-circuit measurement, reset, `X_ERROR`, `Y_ERROR`, `Z_ERROR`, `DEPOLARIZE1`, detectors, observables | measurements at the end only |
 | State memory | (2n+1)² bytes: 65,025 bytes at 127 qubits | 16 · 2ⁿ bytes: 512 MB at 25 qubits |
 | Measured on iPhone, airplane mode, inside the SwiftQuantum IDE app (2026-07-01) | 127-qubit GHZ: 2,166 ms, 63.5 KB | 25 qubits, non-Clifford: 910 ms, 512 MB |
+| Measured on iPhone 13 Pro (iPhone14,2, iOS 27.0.1) with this package, `DeviceReportTests`, release build (2026-10-25) | 127-qubit GHZ, 100 shots: 20.2 ms, 65,025 bytes | 25 qubits, non-Clifford, 100 shots: 3,882 ms, 512 MB |
 | Measured on a Mac (Mac17,7, Apple M5 Max) with this package, `capability-report`, release build (2026-10-22) | 127-qubit GHZ, 100 shots: 12.1 ms | 22 qubits, 100 shots: 225 ms |
 | Hard-coded limit | none; 127 is the documented measurement | none; refuses only when the statevector exceeds physical memory |
 
@@ -68,6 +69,8 @@ Reproduce the Mac row on your own machine:
 ```bash
 swift run -c release capability-report
 ```
+
+On an iPhone the same measurements run inside the test suite, through a small host app ([Examples/DeviceHarness](Examples/DeviceHarness/project.yml)), because SwiftPM test bundles cannot run on a device by themselves. The QECirc #1289 memory experiment with noise 0.005 ran 10,000 shots in 569 ms on the iPhone 13 Pro, with a detection fraction of 0.0689.
 
 `Simulator().run(_:shots:)` picks the engine for you: the stabilizer simulator for Clifford-only circuits, the dense kernel for everything else.
 
@@ -145,7 +148,7 @@ This repository is the correctness layer of SwiftQuantum: the stabilizer simulat
 - [ ] Public repository (private until the export-control record is confirmed)
 - [x] The SwiftQuantum IDE app imports this package for its stabilizer and dense statevector runs
 - [x] A QECirc surface-code memory circuit runs and exports detection events (macOS and the iOS Simulator)
-- [ ] The same on a physical iPhone (`xcodebuild test -scheme SwiftQuantumCoreTests -destination 'id=<device>'`)
+- [x] The same on a physical iPhone (iPhone 13 Pro, all tests through `Examples/DeviceHarness`)
 - [x] A notebook that decodes those events with PyMatching
 
 **M2, months 2 to 3**

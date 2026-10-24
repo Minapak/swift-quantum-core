@@ -1,0 +1,53 @@
+# Host app so the package's tests can run on a physical iPhone or iPad
+# (SwiftPM test bundles cannot run on a device without a host app).
+#   cd Examples/DeviceHarness && xcodegen
+#   xcodebuild test -project DeviceHarness.xcodeproj -scheme DeviceHarness \
+#     -destination 'id=<device udid>' -configuration Release ENABLE_TESTABILITY=YES \
+#     DEVELOPMENT_TEAM=<team> -allowProvisioningUpdates
+name: DeviceHarness
+options:
+  bundleIdPrefix: tech.swiftquantum.core
+  deploymentTarget:
+    iOS: "15.0"
+packages:
+  SwiftQuantumCore:
+    path: ../..
+targets:
+  DeviceHarness:
+    type: application
+    platform: iOS
+    sources: [App]
+    dependencies:
+      - package: SwiftQuantumCore
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        CODE_SIGN_STYLE: Automatic
+        PRODUCT_BUNDLE_IDENTIFIER: tech.swiftquantum.core.deviceharness
+  DeviceHarnessTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: ../../Tests/SwiftQuantumCoreTests
+        excludes: [Resources]
+      - path: Shim
+      - path: ../../Tests/SwiftQuantumCoreTests/Resources/qecirc
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - target: DeviceHarness
+      - package: SwiftQuantumCore
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Automatic
+        PRODUCT_BUNDLE_IDENTIFIER: tech.swiftquantum.core.deviceharness.tests
+schemes:
+  DeviceHarness:
+    build:
+      targets:
+        DeviceHarness: all
+        DeviceHarnessTests: [test]
+    test:
+      targets: [DeviceHarnessTests]
