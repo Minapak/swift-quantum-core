@@ -158,7 +158,7 @@ This repository is the correctness layer of SwiftQuantum: the stabilizer simulat
 - [x] Backend client code excluded (`Scripts/check-boundary.sh`)
 - [x] Test suite: `swift test` (XCTest and Swift Testing), and a CI workflow
 - [x] v0.1.0 tag
-- [ ] Public repository (private until the export-control record is confirmed)
+- [x] Public repository (public since 2026-10-23 KST; owner sign-off on `docs/EXPORT_CONTROL.md` still pending)
 - [x] The SwiftQuantum IDE app imports this package for its stabilizer and dense statevector runs
 - [x] A QECirc surface-code memory circuit runs and exports detection events (macOS and the iOS Simulator)
 - [x] The same on a physical iPhone (iPhone 13 Pro, all tests through `Examples/DeviceHarness`)
@@ -173,7 +173,7 @@ This repository is the correctness layer of SwiftQuantum: the stabilizer simulat
 
 **M3, month 4**
 - [ ] A metriq-gym task for stabilizer simulation on consumer edge devices
-- [x] CI workflow with macOS and iOS Simulator jobs (not yet run on GitHub)
+- [x] CI workflow with macOS and iOS Simulator jobs (first green run on GitHub 2026-10-25)
 - [ ] CONTRIBUTING guide, code of conduct, good first issues
 - [ ] Swift Package Index listing and v1.0.0
 

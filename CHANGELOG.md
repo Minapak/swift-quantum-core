@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- The repository is public on GitHub (since 2026-10-23 KST). The first CI run
+  on GitHub passed on 2026-10-25: macOS (`swift test`) and iOS Simulator jobs.
+  Earlier runs stopped at start-up while the repository was private.
 - `Examples/DeviceHarness`: a small iOS host app (xcodegen) that runs the whole
   test suite on a physical iPhone or iPad, since SwiftPM test bundles cannot
   run on a device by themselves. Verified on iPhone 13 Pro, iOS 27.0.1,

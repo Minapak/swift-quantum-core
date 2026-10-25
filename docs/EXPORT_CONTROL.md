@@ -36,11 +36,11 @@ in this package.
 
 ## Conclusion (draft)
 
-Once the repository is public on GitHub under Apache-2.0, the package is
+The repository is public on GitHub under Apache-2.0, so the package is
 "published" software under § 734.7(a)(4) and is not subject to the EAR. No
-license, classification request or notification is needed for that. While the
-repository is private, it is unpublished, and sharing it with foreign persons
-would need its own check. This draft finds nothing that would require that.
+license, classification request or notification is needed for that. Before it
+was made public, the repository was unpublished; this draft found nothing in it
+that would have needed a license to share.
 
 ## Check record
 
@@ -48,6 +48,7 @@ would need its own check. This draft finds nothing that would require that.
 - Researched by: drafted with Claude Code from the eCFR text cited above
 - Confirmed by: _Eunmin Park — not yet confirmed_
 - Date confirmed: _
-- Repository made public on: _
+- Repository made public on: 2026-10-23 KST (GitHub event, 2026-10-22 23:56 UTC)
 
-Fill in "Confirmed by" before changing the repository to public.
+The repository was made public before "Confirmed by" was filled in. The owner
+still needs to read this record and confirm it.
