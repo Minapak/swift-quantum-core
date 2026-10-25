@@ -126,6 +126,19 @@ In the 100,000-shot run every detector's firing rate agreed with Stim's within |
 - **OpenQASM 2.0.** One `qreg`; `measure q[i] -> c[k]` must write classical bits in order. Noise, detectors and observables are written as comments, because OpenQASM 2.0 has no form for them.
 - **Stim.** Import unrolls `REPEAT`, rewrites X/Y-basis measurements and resets and `SQRT_*`/`CY` with H, S and S†, and ignores coordinates and `TICK`. Anything else, and every non-Clifford gate on export, is refused with an error. The full mapping is in [docs/STIM_GATE_MAPPING.md](docs/STIM_GATE_MAPPING.md).
 
+## Testing
+
+| What | Command |
+|---|---|
+| Unit tests on the Mac (XCTest and Swift Testing) | `swift test` |
+| Same suite on an iOS Simulator | `xcodebuild test -scheme SwiftQuantumCoreTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` |
+| Same suite on a physical iPhone or iPad | `cd Examples/DeviceHarness && xcodegen`, then `xcodebuild test -project DeviceHarness.xcodeproj -scheme DeviceHarness -destination 'id=<udid>' -configuration Release ENABLE_TESTABILITY=YES DEVELOPMENT_TEAM=<team> -allowProvisioningUpdates` |
+| Every QECirc memory experiment (opt-in) | `QECIRC_DIR=/path/to/qecirc-website swift test -c release --filter QECircCorpusTests` |
+| Compare with Stim and decode with PyMatching | `swift run -c release qecirc-surface-memory`, then `python3 Scripts/verify_with_stim.py qecirc_d3_memory.stim qecirc_d3_memory.01` |
+| Open-core boundary | `Scripts/check-boundary.sh` |
+
+`DeviceReportTests` prints a `DEVICE-REPORT` line per measurement on whatever machine runs the suite.
+
 ## Related tools
 
 - **[Stim](https://github.com/quantumlib/Stim)** is the reference stabilizer simulator. If you need speed, use Stim. This package does not compete with it on speed or scale. It runs the same formalism on the device a learner already carries and hands the circuit back to Stim.

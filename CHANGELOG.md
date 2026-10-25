@@ -1,6 +1,15 @@
 # Changelog
 
-## Unreleased (0.1.0-dev)
+## Unreleased
+
+- `Examples/DeviceHarness`: a small iOS host app (xcodegen) that runs the whole
+  test suite on a physical iPhone or iPad, since SwiftPM test bundles cannot
+  run on a device by themselves. Verified on iPhone 13 Pro, iOS 27.0.1,
+  Release build (2026-10-25); measurements are in the README.
+- `ReadmeSnippetTests` skips the README comparison on a device, where source
+  files are not available.
+
+## 0.1.0 — 2026-10-23
 
 Lifted from the SwiftQuantum IDE app (`Core/Engines`): the CHP stabilizer
 tableau, the build 18 exact statevector kernel, and the OpenQASM 2.0

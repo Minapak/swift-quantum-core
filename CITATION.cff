@@ -8,7 +8,8 @@ authors:
     given-names: Eunmin
     affiliation: "SwiftQuantum Technologies, LLC"
 license: Apache-2.0
-version: 0.1.0-dev
+version: 0.1.0
+date-released: 2026-10-23
 keywords:
   - quantum computing
   - stabilizer simulation
